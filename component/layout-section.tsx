@@ -1,0 +1,29 @@
+import { ReactNode } from 'react';
+
+type LayoutSectionProps = {
+  children: ReactNode;
+  childrenUpperContainer?: ReactNode;
+  classNameSection?: string;
+  classNameContainer?: string;
+  id?: string;
+};
+
+const LayoutSection = ({
+  children,
+  childrenUpperContainer,
+  classNameSection,
+  classNameContainer,
+  id,
+}: LayoutSectionProps) => {
+  return (
+    <section
+      className={`py-[60px] px-6 md:py-[100px] md:px-10 relative ${classNameSection || ''}`}
+      id={id}
+    >
+      {childrenUpperContainer}
+      <div className={`container mx-auto ${classNameContainer || ''}`}>{children}</div>
+    </section>
+  );
+};
+
+export default LayoutSection;
