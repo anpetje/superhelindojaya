@@ -44,15 +44,27 @@ const InquiryForm = () => {
     setErrors({ ...errors, [e.target.name]: '' });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
     setSubmitted(true);
     if (Object.keys(validationErrors).length === 0) {
-      // Submit logic here (e.g., API call)
-      alert('Form submitted successfully!');
-      setFields({ name: '', email: '', phone: '', company: '' });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fields),
+      });
+
+      const result = await res.json();
+      if (result?.status === 'success') {
+        alert('Form submitted successfully!');
+        setFields({ name: '', email: '', phone: '', company: '' });
+      } else {
+        alert('Form submission failed.');
+      }
       setSubmitted(false);
     }
   };
