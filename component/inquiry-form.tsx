@@ -25,6 +25,7 @@ const InquiryForm = () => {
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -50,21 +51,27 @@ const InquiryForm = () => {
     setErrors(validationErrors);
     setSubmitted(true);
     if (Object.keys(validationErrors).length === 0) {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(fields),
-      });
+      setLoading(true);
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(fields),
+        });
 
-      const result = await res.json();
-      if (result?.status === 'success') {
-        alert('Form submitted successfully!');
-        setFields({ name: '', email: '', phone: '', company: '' });
-      } else {
+        const result = await res.json();
+        if (result?.status === 'success') {
+          alert('Form submitted successfully!');
+          setFields({ name: '', email: '', phone: '', company: '' });
+        } else {
+          alert('Form submission failed.');
+        }
+      } catch (err) {
         alert('Form submission failed.');
       }
+      setLoading(false);
       setSubmitted(false);
     }
   };
@@ -94,6 +101,7 @@ const InquiryForm = () => {
               value={fields.name}
               onChange={handleChange}
               autoComplete='off'
+              disabled={loading}
             />
             {submitted && errors.name && (
               <div className='text-red-400 text-xs mt-1 text-left'>{errors.name}</div>
@@ -108,6 +116,7 @@ const InquiryForm = () => {
               value={fields.email}
               onChange={handleChange}
               autoComplete='off'
+              disabled={loading}
             />
             {submitted && errors.email && (
               <div className='text-red-400 text-xs mt-1 text-left'>{errors.email}</div>
@@ -122,6 +131,7 @@ const InquiryForm = () => {
               value={fields.phone}
               onChange={handleChange}
               autoComplete='off'
+              disabled={loading}
             />
             {submitted && errors.phone && (
               <div className='text-red-400 text-xs mt-1 text-left'>{errors.phone}</div>
@@ -135,6 +145,7 @@ const InquiryForm = () => {
               value={fields.company}
               onChange={handleChange}
               autoComplete='off'
+              disabled={loading}
             />
             {submitted && errors.company && (
               <div className='text-red-400 text-xs mt-1 text-left'>{errors.company}</div>
@@ -142,12 +153,41 @@ const InquiryForm = () => {
           </div>
         </div>
 
-        <button
-          type='submit'
-          className={`px-6 py-3 text-white font-bold uppercase rounded-full border border-[#FCF2D9] bg-gradient-to-r from-[#008837] to-[#FFB300] hover:from-green-700 hover:to-yellow-500 transition`}
-        >
-          Get an Exclusive Offer Today!
-        </button>
+        <div className='flex justify-center'>
+          <button
+            type='submit'
+            className={`px-6 py-3 text-white font-bold uppercase rounded-full border border-[#FCF2D9] bg-gradient-to-r from-[#008837] to-[#FFB300] hover:from-green-700 hover:to-yellow-500 transition flex items-center justify-center`}
+            disabled={loading}
+          >
+            {loading ? (
+              <span className='flex items-center gap-2'>
+                <svg
+                  className='animate-spin h-5 w-5 text-white'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                >
+                  <circle
+                    className='opacity-25'
+                    cx='12'
+                    cy='12'
+                    r='10'
+                    stroke='currentColor'
+                    strokeWidth='4'
+                  ></circle>
+                  <path
+                    className='opacity-75'
+                    fill='currentColor'
+                    d='M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z'
+                  ></path>
+                </svg>
+                Loading...
+              </span>
+            ) : (
+              'Get an Exclusive Offer Today!'
+            )}
+          </button>
+        </div>
       </form>
     </LayoutSection>
   );
