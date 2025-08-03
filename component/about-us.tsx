@@ -31,10 +31,26 @@ const AboutUs = () => {
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-4'>
-        <Image src={About1} alt='About Image 1' className='w-full h-auto object-cover rounded-lg' />
-        <Image src={About2} alt='About Image 2' className='w-full h-auto object-cover rounded-lg' />
-        <Image src={About3} alt='About Image 3' className='w-full h-auto object-cover rounded-lg' />
-        <Image src={About4} alt='About Image 4' className='w-full h-auto object-cover rounded-lg' />
+        <Image
+          src={About1}
+          alt='About Image 1'
+          className='w-full max-w-[254px] h-auto object-cover rounded-lg'
+        />
+        <Image
+          src={About2}
+          alt='About Image 2'
+          className='w-full max-w-[254px] h-auto object-cover rounded-lg'
+        />
+        <Image
+          src={About3}
+          alt='About Image 3'
+          className='w-full max-w-[254px] h-auto object-cover rounded-lg'
+        />
+        <Image
+          src={About4}
+          alt='About Image 4'
+          className='w-full max-w-[254px] h-auto object-cover rounded-lg'
+        />
       </div>
 
       <div className='flex flex-col gap-2.5'>
@@ -47,9 +63,21 @@ const AboutUs = () => {
         </p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-        <Image src={Since1} alt='Since Image 1' className='w-full h-auto object-cover rounded-lg' />
-        <Image src={Since2} alt='Since Image 2' className='w-full h-auto object-cover rounded-lg' />
-        <Image src={Since3} alt='Since Image 3' className='w-full h-auto object-cover rounded-lg' />
+        <Image
+          src={Since1}
+          alt='Since Image 1'
+          className='w-full max-w-[320px] h-auto object-cover rounded-lg'
+        />
+        <Image
+          src={Since2}
+          alt='Since Image 2'
+          className='w-full max-w-[320px] h-auto object-cover rounded-lg'
+        />
+        <Image
+          src={Since3}
+          alt='Since Image 3'
+          className='w-full max-w-[320px] h-auto object-cover rounded-lg'
+        />
       </div>
     </LayoutSection>
   );

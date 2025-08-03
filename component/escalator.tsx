@@ -31,7 +31,7 @@ const Escalator = () => {
     image: StaticImageData;
   }) => {
     return (
-      <div className='rounded-xl overflow-hidden bg-white'>
+      <div className='rounded-xl overflow-hidden bg-white max-w-[954px] '>
         <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
         <div className='px-2.5 py-5 flex flex-col gap-2.5 text-left leading-[140%] '>
           <div className='text-[#008837] font-bold text-[25px] '>{title}</div>

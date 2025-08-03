@@ -37,7 +37,7 @@ const OurProduct = () => {
   }) => {
     return (
       <Link href={url || '#'}>
-        <div className='rounded-xl overflow-hidden bg-white '>
+        <div className='rounded-xl overflow-hidden bg-white max-w-[452px] '>
           <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
           <div className='p-9 text-left text-[#666666] text-lg leading-[140%] '>{description}</div>
         </div>
