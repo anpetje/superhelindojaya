@@ -82,17 +82,19 @@ const InquiryForm = () => {
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
     >
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}
+        >
           Want to know more?
         </div>
-        <p className='text-xl text-white'>
+        <p className='text-base sm:text-xl text-white'>
           For inquiries about new product installation, modernization, quotation or any other
           related questions regarding services, please e-mail us. Our dedicated team will get back
           to you within 24 hours.
         </p>
       </div>
       <form id='inquiry-form' onSubmit={handleSubmit} noValidate>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 mb-[50px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-[50px]'>
           <div>
             <Input
               label='Full Name'
