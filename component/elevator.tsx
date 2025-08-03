@@ -52,11 +52,11 @@ const Elevator = () => {
     image: StaticImageData;
   }) => {
     return (
-      <div className='rounded-xl overflow-hidden bg-white max-w-[320px]'>
+      <div className='rounded-xl overflow-hidden bg-white sm:max-w-[320px]'>
         <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
         <div className='px-2.5 py-5 flex flex-col gap-2.5 text-left leading-[140%] '>
-          <div className='text-[#C48A04] font-bold text-[25px] '>{title}</div>
-          <div className='text-[#666666] text-lg '>{description}</div>
+          <div className='text-[#C48A04] font-bold text-[23px] sm:text-[25px] '>{title}</div>
+          <div className='text-[#666666] text-base sm:text-lg '>{description}</div>
         </div>
       </div>
     );
@@ -66,13 +66,15 @@ const Elevator = () => {
     <LayoutSection
       id='elevator'
       classNameSection='bg-white'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px] container mx-auto'
     >
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}
+        >
           Elevator
         </div>
-        <p className='text-xl text-white'>
+        <p className='text-base sm:text-xl text-black'>
           Hyundai Elevator develops products appropriate for building designs and elevator uses so
           as to provide customized solutions. Not only safety and ride quality but space efficiency
           is taken into account to provide you with optimal products that will raise the value of
