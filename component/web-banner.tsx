@@ -18,7 +18,19 @@ const WebBanner = () => {
   );
 
   return (
-    <LayoutSection classNameContainer='flex flex-col items-center justify-center text-center'>
+    <LayoutSection
+      classNameSection='relative'
+      classNameContainer='flex flex-col items-center justify-center text-center '
+      childrenUpperContainer={
+        <Image
+          src={ImagesVariables.webBanner.src}
+          alt={ImagesVariables.webBanner.alt}
+          width={1920}
+          height={1080}
+          className='absolute top-0 left-0 w-full h-full object-cover -z-10'
+        />
+      }
+    >
       <div className='flex items-center justify-center gap-10 mb-10 bg-white rounded-[100px] py-9 px-[120px] '>
         <Image
           src={ImagesVariables.logoWithText.src}
@@ -42,7 +54,7 @@ const WebBanner = () => {
       <h2 className={`text-2xl text-[#C48A04] font-semibold leading-[130%] uppercase `}>
         Authorized Sole Agent of Hyundai Elevator in Indonesia
       </h2>
-      <ul className='text-left list-none pl-0 mt-6 text-2xl leading-[160%] uppercase relative space-y-2.5 '>
+      <ul className='text-left text-black list-none pl-0 mt-6 text-2xl leading-[160%] uppercase relative space-y-2.5 '>
         {itemList('World-Class Elevator Technology')}
         {itemList('Energy-Efficient & Eco-Friendly')}
         {itemList('Low Maintenance, Built to Last')}
