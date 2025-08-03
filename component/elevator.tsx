@@ -64,6 +64,7 @@ const Elevator = () => {
 
   return (
     <LayoutSection
+      id='elevator'
       classNameSection='bg-white'
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
     >

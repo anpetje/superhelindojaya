@@ -13,6 +13,7 @@ import Image from 'next/image';
 const AboutUs = () => {
   return (
     <LayoutSection
+      id='about-us'
       classNameSection='bg-white'
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
     >

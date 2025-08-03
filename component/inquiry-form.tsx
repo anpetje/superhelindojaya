@@ -15,7 +15,10 @@ const Input = ({ label, required = false, ...props }: InputProps) => (
 
 const InquiryForm = () => {
   return (
-    <LayoutSection classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'>
+    <LayoutSection
+      id='inquiry'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
+    >
       <div className='flex flex-col gap-2.5'>
         <div className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
           Want to know more?
@@ -26,7 +29,7 @@ const InquiryForm = () => {
           to you within 24 hours.
         </p>
       </div>
-      <form>
+      <form id='inquiry-form'>
         {/* <div className='flex justify-between'>
           <input type='text' name='name' id='name' className='w-[305px] ' />
           <input type='email' name='email' id='email' className='w-[305px] ' />

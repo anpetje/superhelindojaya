@@ -4,6 +4,7 @@ import Escalator from '@/assets/images/products/escalator.png';
 
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 const OurProduct = () => {
   const products = [
@@ -12,12 +13,14 @@ const OurProduct = () => {
       description:
         'Hyundai Elevator develops high-quality vertical transportation solutions tailored to meet diverse architectural and operational requirements. Our elevators prioritize safety, comfort, efficiency, and cutting-edge design.',
       image: Elevator,
+      url: '#elevator',
     },
     {
       title: 'Escalator',
       description:
         'The escalators and travelators of Hyundai Elevator connect severed areas, transforming them into an open and mutual space in a building. They will offer a new dimension of safety, efficiency and ride quality.',
       image: Escalator,
+      url: '#escalator',
     },
   ];
 
@@ -25,21 +28,26 @@ const OurProduct = () => {
     title,
     description,
     image,
+    url,
   }: {
     title: string;
     description: string;
     image: StaticImageData;
+    url?: string;
   }) => {
     return (
-      <div className='rounded-xl overflow-hidden bg-white '>
-        <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
-        <div className='p-9 text-left text-[#666666] text-lg leading-[140%] '>{description}</div>
-      </div>
+      <Link href={url || '#'}>
+        <div className='rounded-xl overflow-hidden bg-white '>
+          <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
+          <div className='p-9 text-left text-[#666666] text-lg leading-[140%] '>{description}</div>
+        </div>
+      </Link>
     );
   };
 
   return (
     <LayoutSection
+      id='our-product'
       classNameSection='bg-[#F9F9F9]'
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
     >
@@ -63,6 +71,7 @@ const OurProduct = () => {
             title={item.title}
             description={item.description}
             image={item.image}
+            url={item.url}
           />
         ))}
       </div>

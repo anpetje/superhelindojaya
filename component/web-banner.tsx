@@ -19,6 +19,7 @@ const WebBanner = () => {
 
   return (
     <LayoutSection
+      id='web-banner'
       classNameSection='relative'
       classNameContainer='flex flex-col items-center justify-center text-center '
       childrenUpperContainer={

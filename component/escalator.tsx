@@ -43,6 +43,7 @@ const Escalator = () => {
 
   return (
     <LayoutSection
+      id='escalator'
       classNameSection='bg-[#F9F9F9]'
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
     >

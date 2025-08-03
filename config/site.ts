@@ -11,7 +11,15 @@ export const siteConfig = {
   links: {
     twitter: 'https://twitter.com/superhelindojaya',
     facebook: 'https://facebook.com/superhelindojaya',
-    instagram: 'https://instagram.com/superhelindojaya',
+    instagram: 'https://www.instagram.com/superhelindojaya/',
     linkedin: 'https://linkedin.com/company/superhelindojaya',
+  },
+  contact: {
+    whatsapp: 'https://wa.me/6281288888444',
+    email: 'marketing@superhelindo.id',
+    phone: '+62 21 631 8444',
+    phone2: '+62 21 633 8445',
+    fax: '+62 21 6326288',
+    address: 'Jl. K.H. Moh Mansyur No. 19B (Jembatan Lima) Jakarta 10140',
   },
 };
