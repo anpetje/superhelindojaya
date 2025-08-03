@@ -31,11 +31,11 @@ const Escalator = () => {
     image: StaticImageData;
   }) => {
     return (
-      <div className='rounded-xl overflow-hidden bg-white max-w-[954px] '>
+      <div className='rounded-xl overflow-hidden bg-white sm:max-w-[954px] '>
         <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
         <div className='px-2.5 py-5 flex flex-col gap-2.5 text-left leading-[140%] '>
-          <div className='text-[#008837] font-bold text-[25px] '>{title}</div>
-          <div className='text-[#666666] text-lg '>{description}</div>
+          <div className='text-[#008837] font-bold text-[23px] sm:text-[25px] '>{title}</div>
+          <div className='text-[#666666] text-base sm:text-lg '>{description}</div>
         </div>
       </div>
     );
@@ -48,16 +48,18 @@ const Escalator = () => {
       classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
     >
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}
+        >
           ESCALATOR / MOVING WALK
         </div>
-        <p className='text-xl text-white'>
+        <p className='text-base sm:text-xl text-black'>
           The escalators and moving walks of Hyundai Elevator connect severed areas, transforming
           them into an open and mutual space in a building. They will offer a new dimension of
           safety, efficiency and ride quality.
         </p>
       </div>
-      <div className='grid grid-cols-1 content-center gap-x-[30px] gap-y-[50px]'>
+      <div className='grid grid-cols-1 content-center gap-x-[30px] gap-y-[40px] sm:gap-y-[50px]'>
         {products.map((item, index) => (
           <CardProduct
             key={index}
