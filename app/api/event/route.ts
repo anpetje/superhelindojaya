@@ -4,10 +4,31 @@ function hash(data: string) {
   return crypto.createHash('sha256').update(data).digest('hex');
 }
 
+const pixelID = process.env.FB_PIXEL_ID;
+const accessToken = process.env.FB_ACCESS_TOKEN;
+
 export async function POST(request: Request) {
   if (request.method && request.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
   }
+
+  if (!pixelID || !accessToken) {
+    return new Response(
+      JSON.stringify({
+        success: true,
+        // message: 'Facebook Pixel ID or Access Token is not set. Skipping event tracking.',
+        data: null,
+      }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
+  // get hostname from request
+  const url = new URL(request.url);
+  const hostname = url.hostname;
 
   const {
     eventID,
@@ -25,7 +46,7 @@ export async function POST(request: Request) {
         event_time: Math.floor(Date.now() / 1000),
         event_id: eventID,
         action_source: actionSource,
-        event_source_url: 'https://leads.maximdigi.com/',
+        event_source_url: hostname,
         user_data: {
           em: email ? [hash(email)] : undefined,
           ph: phone ? [hash(phone)] : undefined,
@@ -45,8 +66,6 @@ export async function POST(request: Request) {
       body: JSON.stringify(body),
     }
   );
-
-  console.log('Meta Event Response:', response.status, response.statusText, response, body);
 
   const data = await response.json();
   return new Response(JSON.stringify(data), {

@@ -65,6 +65,28 @@ const InquiryForm = () => {
         if (result?.status === 'success') {
           alert('Form submitted successfully!');
           setFields({ name: '', email: '', phone: '', company: '' });
+
+          const eventFor = 'Submit Form';
+          await fetch('/api/event', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventID: eventFor,
+              eventName: 'Lead',
+              email: fields.email,
+              phone: fields.phone,
+              customData: {
+                event_name: eventFor,
+                content_name: eventFor,
+                name: fields.name,
+                company_name: fields.company,
+              },
+            }),
+          })
+            .then((res) => res.json())
+            .catch((err) => {
+              console.error('Error posting meta event:', err);
+            });
         } else {
           alert('Form submission failed.');
         }

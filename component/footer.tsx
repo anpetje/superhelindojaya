@@ -10,6 +10,7 @@ import Location from '@/assets/images/contact/location.png';
 import Phone from '@/assets/images/contact/phone.png';
 import Email from '@/assets/images/contact/email.png';
 import Fax from '@/assets/images/contact/fax.png';
+import WaButton from './wa-button';
 
 const Footer = () => {
   return (
@@ -53,15 +54,7 @@ const Footer = () => {
                     className='w-auto h-[36px]'
                   />
                 </Link>
-                <Link id='whatsapp-link' href={siteConfig.contact.whatsapp} target='_blank'>
-                  <Image
-                    src={Whatsapp}
-                    alt='Whatsapp'
-                    width={36}
-                    height={36}
-                    className='w-auto h-[36px]'
-                  />
-                </Link>
+                <WaButton />
               </div>
             </div>
             <div className='flex flex-col gap-2.5 text-xs sm:text-xl text-white'>
