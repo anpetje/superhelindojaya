@@ -33,7 +33,9 @@ const OurProduct = () => {
     return (
       <div className='rounded-xl overflow-hidden'>
         <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
-        <div className='p-9 text-black'>{description}</div>
+        <div className='p-9 text-left text-[#666666] text-lg leading-[140%] bg-white'>
+          {description}
+        </div>
       </div>
     );
   };
