@@ -157,6 +157,7 @@ const InquiryForm = () => {
 
         <div className='flex justify-center'>
           <button
+            id='submit-button-inquiry'
             type='submit'
             className={`px-6 py-3 text-white font-bold uppercase rounded-full border border-[#FCF2D9] bg-gradient-to-r from-[#008837] to-[#FFB300] hover:from-green-700 hover:to-yellow-500 transition flex items-center justify-center`}
             disabled={loading}

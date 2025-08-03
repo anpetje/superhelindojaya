@@ -53,7 +53,7 @@ const Footer = () => {
                     className='w-auto h-[36px]'
                   />
                 </Link>
-                <Link href={siteConfig.contact.whatsapp} target='_blank'>
+                <Link id='whatsapp-link' href={siteConfig.contact.whatsapp} target='_blank'>
                   <Image
                     src={Whatsapp}
                     alt='Whatsapp'

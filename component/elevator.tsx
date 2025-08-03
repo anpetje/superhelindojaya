@@ -46,19 +46,57 @@ const Elevator = () => {
     title,
     description,
     image,
+    className = '',
   }: {
     title: string;
     description: string;
     image: StaticImageData;
+    className?: string;
   }) => {
     return (
-      <div className='rounded-xl overflow-hidden bg-white sm:max-w-[320px]'>
+      <div className={`rounded-xl overflow-hidden bg-white sm:max-w-[320px] ${className || ''}`}>
         <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
         <div className='px-2.5 py-5 flex flex-col gap-2.5 text-left leading-[140%] '>
           <div className='text-[#C48A04] font-bold text-[23px] sm:text-[25px] '>{title}</div>
           <div className='text-[#666666] text-base sm:text-lg '>{description}</div>
         </div>
       </div>
+    );
+  };
+
+  const gridProducts = () => {
+    const columns = 3;
+    const fullRows = Math.floor(products.length / columns);
+
+    const fullRowItems = products.slice(0, fullRows * columns);
+    const lastRowItems = products.slice(fullRows * columns);
+    return (
+      <>
+        <div className='grid grid-cols-1 md:grid-cols-3 content-center gap-x-[30px] gap-y-[50px]'>
+          {fullRowItems.map((item, index) => {
+            return (
+              <CardProduct
+                key={index}
+                title={item.title}
+                description={item.description}
+                image={item.image}
+              />
+            );
+          })}
+        </div>
+        {lastRowItems.length > 0 && (
+          <div className='flex flex-col sm:flex-row justify-center gap-[30px]'>
+            {lastRowItems.map((item, idx) => (
+              <CardProduct
+                key={idx}
+                title={item.title}
+                description={item.description}
+                image={item.image}
+              />
+            ))}
+          </div>
+        )}
+      </>
     );
   };
 
@@ -81,16 +119,7 @@ const Elevator = () => {
           buildings with exquisite designs and convenient functions.
         </p>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-3 content-center gap-x-[30px] gap-y-[50px]'>
-        {products.map((item, index) => (
-          <CardProduct
-            key={index}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-          />
-        ))}
-      </div>
+      {gridProducts()}
     </LayoutSection>
   );
 };
