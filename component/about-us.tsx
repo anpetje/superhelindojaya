@@ -15,13 +15,15 @@ const AboutUs = () => {
     <LayoutSection
       id='about-us'
       classNameSection='bg-white'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px]'
     >
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}
+        >
           About Us
         </div>
-        <p className='text-xl text-black'>
+        <p className='text-base sm:text-xl text-black'>
           Established in 1993, PT Superhelindo Jaya is the sole authorized agent for Hyundai
           Elevator & Escalator in Indonesia. We are recognized as one of the largest and most
           trusted companies in the elevator and escalator industry. Driven by professionalism and a
@@ -30,7 +32,7 @@ const AboutUs = () => {
         </p>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-4'>
+      <div className='grid grid-cols-2 md:grid-cols-4'>
         <Image
           src={About1}
           alt='About Image 1'
@@ -54,15 +56,17 @@ const AboutUs = () => {
       </div>
 
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}
+        >
           Since 1993
         </div>
-        <p className='text-xl text-black'>
+        <p className='text-base sm:text-xl text-black'>
           PT Superhelindo Jaya has successfully installed over 10,000++ units of elevators and
           escalators across Indonesia (as of 2024).
         </p>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-3 gap-2.5 sm:gap-4'>
         <Image
           src={Since1}
           alt='Since Image 1'

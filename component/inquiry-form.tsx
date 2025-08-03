@@ -79,7 +79,7 @@ const InquiryForm = () => {
   return (
     <LayoutSection
       id='inquiry'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px]'
     >
       <div className='flex flex-col gap-2.5'>
         <div
