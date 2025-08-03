@@ -23,6 +23,7 @@ const Footer = () => {
               width={300}
               height={100}
               className='w-auto h-[46px]'
+              priority
             />
 
             <Image
