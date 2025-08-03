@@ -7,6 +7,7 @@ import FreightElevator from '@/assets/images/products/elevator/freight-elevator.
 import CarElevator from '@/assets/images/products/elevator/automobil-elevator.png';
 import HomeElevator from '@/assets/images/products/elevator/home-elevator.png';
 import HospitalElevator from '@/assets/images/products/elevator/hospital-bed-elevator.png';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
 const Elevator = () => {
   const products = [
@@ -72,7 +73,7 @@ const Elevator = () => {
     const lastRowItems = products.slice(fullRows * columns);
     return (
       <>
-        <div className='grid grid-cols-1 md:grid-cols-3 content-center gap-x-[30px] gap-y-[50px]'>
+        <div className='grid-cols-1 md:grid-cols-3 content-center gap-x-[30px] gap-y-[50px] hidden sm:grid'>
           {fullRowItems.map((item, index) => {
             return (
               <CardProduct
@@ -85,7 +86,7 @@ const Elevator = () => {
           })}
         </div>
         {lastRowItems.length > 0 && (
-          <div className='flex flex-col sm:flex-row justify-center gap-[30px]'>
+          <div className='flex-col sm:flex-row justify-center gap-[30px] hidden sm:flex'>
             {lastRowItems.map((item, idx) => (
               <CardProduct
                 key={idx}
@@ -97,6 +98,25 @@ const Elevator = () => {
           </div>
         )}
       </>
+    );
+  };
+
+  const carouselProducts = () => {
+    return (
+      <Carousel className='w-screen sm:hidden px-4'>
+        <CarouselContent className='overflow-visible'>
+          {products.map((item, index) => (
+            <CarouselItem key={index} className='flex justify-center basis-3/4'>
+              <CardProduct
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                className='w-full sm:max-w-[320px]'
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     );
   };
 
@@ -120,6 +140,7 @@ const Elevator = () => {
         </p>
       </div>
       {gridProducts()}
+      {carouselProducts()}
     </LayoutSection>
   );
 };
