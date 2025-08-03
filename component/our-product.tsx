@@ -39,7 +39,9 @@ const OurProduct = () => {
       <Link href={url || '#'}>
         <div className='rounded-xl overflow-hidden bg-white max-w-[452px] '>
           <Image src={image} alt={title} className='w-full h-auto object-cover rounded-xl' />
-          <div className='p-9 text-left text-[#666666] text-lg leading-[140%] '>{description}</div>
+          <div className='p-6 sm:p-9 text-left text-[#666666] text-base sm:text-lg leading-[140%] '>
+            {description}
+          </div>
         </div>
       </Link>
     );
@@ -49,13 +51,15 @@ const OurProduct = () => {
     <LayoutSection
       id='our-product'
       classNameSection='bg-[#F9F9F9]'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px] container mx-auto'
     >
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}>
+        <div
+          className={`text-2xl sm:text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}
+        >
           Our Products
         </div>
-        <p className='text-xl text-black'>
+        <p className='text-base sm:text-xl text-black'>
           At PT Superhelindo Jaya, we go beyond simply supplying elevators and escalators — we
           deliver complete, worry-free solutions. From helping clients choose the right product to
           offering reliable consultation, we ensure every decision is well-informed. With readily
