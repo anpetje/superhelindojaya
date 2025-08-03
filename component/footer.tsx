@@ -105,7 +105,7 @@ const Footer = () => {
       </div>
 
       <div className='p-[30px] bg-[#232323] text-white text-center'>
-        <p className='container mx-auto '>
+        <p className='container mx-auto text-xl text-[#C48A04] '>
           © {new Date().getFullYear()} HYUNDAI ELEVATOR SOLE AGENT. All rights reserved.
         </p>
       </div>
