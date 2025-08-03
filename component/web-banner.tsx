@@ -1,5 +1,4 @@
 import { ImagesVariables } from '@/config/images';
-import { Colors } from '@/config/colors';
 import LayoutSection from './layout-section';
 import Image from 'next/image';
 
@@ -7,7 +6,7 @@ const WebBanner = () => {
   const itemList = (content: string) => (
     <li className='flex items-center gap-5'>
       <svg
-        className={`w-[17px] h-[21px] text-[${Colors.primary}] flex-shrink-0`}
+        className={`w-[17px] h-[21px] text-[#008837] flex-shrink-0`}
         viewBox='0 0 17 21'
         fill='currentColor'
         xmlns='http://www.w3.org/2000/svg'
@@ -37,10 +36,10 @@ const WebBanner = () => {
           className='w-auto h-[46px]'
         />
       </div>
-      <h1 className={`text-[42px] text-[${Colors.primary}] font-bold leading-[130%] uppercase `}>
+      <h1 className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
         Total Solutions for Movement
       </h1>
-      <h2 className={`text-2xl text-[${Colors.secondary}] font-semibold leading-[130%] uppercase `}>
+      <h2 className={`text-2xl text-[#C48A04] font-semibold leading-[130%] uppercase `}>
         Authorized Sole Agent of Hyundai Elevator in Indonesia
       </h2>
       <ul className='text-left list-none pl-0 mt-6 text-2xl leading-[160%] uppercase relative space-y-2.5 '>

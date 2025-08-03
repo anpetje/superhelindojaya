@@ -1,11 +1,10 @@
-import { Colors } from '@/config/colors';
 import LayoutSection from './layout-section';
 
 const OurClient = () => {
   return (
     <LayoutSection classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'>
       <div className='flex flex-col gap-2.5'>
-        <div className={`text-[42px] text-[${Colors.primary}] font-bold leading-[130%] uppercase `}>
+        <div className={`text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}>
           Our Clients
         </div>
         <p className='text-xl text-white'>

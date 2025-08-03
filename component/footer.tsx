@@ -1,4 +1,3 @@
-import { Colors } from '@/config/colors';
 import { ImagesVariables } from '@/config/images';
 import Image from 'next/image';
 
@@ -26,7 +25,7 @@ const Footer = () => {
           </div>
           <div className='grid grid-cols-2 gap-[130px] mt-[50px]'>
             <div className='flex flex-col gap-[30px]'>
-              <div className={`text-xl text-[${Colors.secondary}] font-bold uppercase`}>
+              <div className={`text-xl text-[#008837] font-bold uppercase`}>
                 PT Superhelindo Jaya
               </div>
               <div className='text-xl text-white'>
