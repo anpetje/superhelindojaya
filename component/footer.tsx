@@ -2,7 +2,6 @@ import { ImagesVariables } from '@/config/images';
 import Image from 'next/image';
 
 import Intagram from '@/assets/images/socials/ig.png';
-import Whatsapp from '@/assets/images/socials/wa.png';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 

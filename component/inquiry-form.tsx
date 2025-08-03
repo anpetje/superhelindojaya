@@ -91,6 +91,7 @@ const InquiryForm = () => {
           alert('Form submission failed.');
         }
       } catch (err) {
+        console.error('Form submission failed:', err);
         alert('Form submission failed.');
       }
       setLoading(false);
