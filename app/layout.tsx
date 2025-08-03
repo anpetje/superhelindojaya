@@ -58,13 +58,95 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get domain from request host header
+  const h = await headers();
+  const host = h.get('host');
+  const protocol = host && host.startsWith('localhost') ? 'http' : 'https';
+  const domain = host ? `${protocol}://${host}` : 'https://www.superhelindojaya.id';
+
   return (
     <html lang='en'>
+      <head>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: `{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PT Superhelindo Jaya",
+  "url": "https://www.superhelindojaya.id",
+  "logo": "${domain}/image.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62 21 632 6288",
+    "contactType": "Customer Service",
+    "email": "marketing@superhelindo.id",
+    "areaServed": "ID",
+    "availableLanguage": ["English", "Indonesian"]
+  }
+}`,
+          }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: `{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PT Superhelindo Jaya",
+  "image": "${domain}/image.png",
+  "@id": "https://www.superhelindojaya.id",
+  "url": "https://www.superhelindojaya.id",
+  "telephone": "+62 21 632 6288",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. K.H. Moh Mansyur No. 19B (Jembatan Lima)",
+    "addressLocality": "Jakarta",
+    "postalCode": "10140",
+    "addressCountry": "ID"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:30",
+    "closes": "17:30"
+  },
+  "description": "PT Superhelindo Jaya is the authorized distributor and installer of Hyundai elevators and escalators in Indonesia. Providing world-class vertical transportation solutions since 1993."
+}`,
+          }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: `{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Hyundai Elevators and Escalators",
+  "brand": {
+    "@type": "Brand",
+    "name": "Hyundai Elevator"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Hyundai Elevator Co., Ltd."
+  },
+  "description": "Hyundai elevators, escalators, and moving walks installed by PT Superhelindo Jaya across Indonesia. Products include passenger, freight, hospital bed, automobile, and home elevators.",
+  "image": "${domain}/elevator.png",
+}`,
+          }}
+        />
+      </head>
       <body className={`${FontsVariables.titilliumWeb.variable}`}>{children}</body>
     </html>
   );
