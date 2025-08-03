@@ -17,7 +17,7 @@ const LayoutSection = ({
 }: LayoutSectionProps) => {
   return (
     <section
-      className={`py-[60px] px-6 md:py-[100px] md:px-10 relative ${classNameSection || ''}`}
+      className={`px-4 py-[60px] sm:px-6 md:py-[100px] md:px-10 relative ${classNameSection || ''}`}
       id={id}
     >
       {childrenUpperContainer}
