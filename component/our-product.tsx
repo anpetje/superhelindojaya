@@ -41,7 +41,7 @@ const OurProduct = () => {
   return (
     <LayoutSection
       classNameSection='bg-[#F9F9F9]'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px]'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[50px] container mx-auto'
     >
       <div className='flex flex-col gap-2.5'>
         <div className={`text-[42px] text-[#C48A04] font-bold leading-[130%] uppercase `}>
