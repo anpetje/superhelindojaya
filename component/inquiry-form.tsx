@@ -9,7 +9,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const Input = ({ label, required = false, ...props }: InputProps) => (
   <input
     placeholder={`${label}${required ? ' *' : ''}`}
-    className='w-full px-4 py-2 bg-[#2a2a2a] text-white placeholder:text-gray-300 placeholder:tracking-wide placeholder:font-medium rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500'
+    className='w-[305px] max-w-full px-4 py-2 bg-[#3C3C3C] text-white placeholder:text-gray-300 placeholder:tracking-wide placeholder:font-medium rounded-md border border-[#535353] focus:outline-none focus:ring-2 focus:ring-green-500'
     {...props}
   />
 );
@@ -102,11 +102,12 @@ const InquiryForm = () => {
   return (
     <LayoutSection
       id='inquiry'
-      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px]'
+      classNameSection='bg-[#232323]'
+      classNameContainer='flex flex-col items-center justify-center text-center gap-[40px] sm:gap-[50px] container mx-auto'
     >
       <div className='flex flex-col gap-2.5'>
         <div
-          className={`text-2xl sm:text-[42px] text-[#008837] font-bold leading-[130%] uppercase `}
+          className={`text-2xl sm:text-[42px] text-[#FFB300] font-bold leading-[130%] uppercase `}
         >
           Want to know more?
         </div>
