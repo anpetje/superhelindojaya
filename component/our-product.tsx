@@ -58,7 +58,7 @@ const OurProduct = () => {
           performance and peace of mind.
         </p>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-x-[30px] gap-y-[50px]'>
         {products.map((item, index) => (
           <CardProduct
             key={index}

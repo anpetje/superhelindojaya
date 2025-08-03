@@ -78,7 +78,7 @@ const Elevator = () => {
           buildings with exquisite designs and convenient functions.
         </p>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-3 content-center gap-x-[30px] gap-y-[50px]'>
         {products.map((item, index) => (
           <CardProduct
             key={index}
