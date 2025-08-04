@@ -11,11 +11,11 @@ export const siteConfig = {
   links: {
     twitter: 'https://twitter.com/superhelindojaya',
     facebook: 'https://facebook.com/superhelindojaya',
-    instagram: 'https://www.instagram.com/superhelindojaya/',
+    instagram: 'https://www.instagram.com/superhelindojaya.id/',
     linkedin: 'https://linkedin.com/company/superhelindojaya',
   },
   contact: {
-    whatsapp: 'https://wa.me/6281288888444',
+    whatsapp: 'https://wa.me/6285211927586',
     email: 'marketing@superhelindo.id',
     phone: '+62 21 631 8444',
     phone2: '+62 21 633 8445',

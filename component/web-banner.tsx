@@ -32,7 +32,7 @@ const WebBanner = () => {
         />
       }
     >
-      <div className='flex items-center justify-center gap-2.5 sm:gap-10 mb-[81px] sm:mb-[76px] bg-white/80 rounded-[100px] py-4 px-[30px] sm:py-9 sm:px-[120px] border-2 border-white backdrop-blur-[14px] '>
+      <div className='hidden sm:flex items-center justify-center gap-2.5 sm:gap-10 mb-[81px] sm:mb-[76px] bg-white/80 rounded-[100px] py-4 px-[30px] sm:py-9 sm:px-[120px] border-2 border-white backdrop-blur-[14px] '>
         <Image
           src={ImagesVariables.logoWithText.src}
           alt={ImagesVariables.logoWithText.alt}

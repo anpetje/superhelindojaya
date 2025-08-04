@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Whatsapp from '@/assets/images/socials/wa.png';
 import { siteConfig } from '@/config/site';
 
-const WaButton = () => {
+const WaButtonFloating = () => {
   const handleClickWA = async () => {
     const eventName = 'Klik WhatsApp';
 
@@ -24,15 +24,15 @@ const WaButton = () => {
 
   return (
     <Link
-      id='whatsappLinkFooter'
+      id='whatsappLinkFloat'
       href={siteConfig.contact.whatsapp}
       target='_blank'
-      className='whatsappLink'
+      className='whatsappLink fixed bottom-5 md:bottom-[76px] right-3 md:right-16 rounded-full bg-white shadow-md p-0.5 md:p-1 z-50'
       onClick={handleClickWA}
     >
-      <Image src={Whatsapp} alt='Whatsapp' width={36} height={36} className='w-auto h-[36px]' />
+      <Image src={Whatsapp} alt='Whatsapp' width={50} height={50} className='w-auto h-11' />
     </Link>
   );
 };
 
-export default WaButton;
+export default WaButtonFloating;
