@@ -18,10 +18,10 @@ import React, { useState } from 'react';
 
 const InquiryForm = () => {
   const [fields, setFields] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
+    fullName: '',
+    emailAddress: '',
+    phoneNumber: '',
+    companyName: '',
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitted, setSubmitted] = useState(false);
@@ -29,14 +29,14 @@ const InquiryForm = () => {
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
-    if (!fields.name.trim()) newErrors.name = 'Full Name is required';
-    if (!fields.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(fields.email)) {
-      newErrors.email = 'Invalid email format';
+    if (!fields.fullName.trim()) newErrors.fullName = 'Full Name is required';
+    if (!fields.emailAddress.trim()) {
+      newErrors.emailAddress = 'Email is required';
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(fields.emailAddress)) {
+      newErrors.emailAddress = 'Invalid email format';
     }
-    if (!fields.phone.trim()) newErrors.phone = 'Phone/Whatsapp is required';
-    if (!fields.company.trim()) newErrors.company = 'Company Name is required';
+    if (!fields.phoneNumber.trim()) newErrors.phoneNumber = 'Phone/Whatsapp is required';
+    if (!fields.companyName.trim()) newErrors.companyName = 'Company Name is required';
     return newErrors;
   };
 
@@ -64,7 +64,7 @@ const InquiryForm = () => {
         const result = await res.json();
         if (result?.status === 'success') {
           alert('Form submitted successfully!');
-          setFields({ name: '', email: '', phone: '', company: '' });
+          setFields({ fullName: '', emailAddress: '', phoneNumber: '', companyName: '' });
 
           const eventFor = 'Submit Form';
           await fetch('/api/event', {
@@ -73,13 +73,13 @@ const InquiryForm = () => {
             body: JSON.stringify({
               eventID: eventFor,
               eventName: 'Lead',
-              email: fields.email,
-              phone: fields.phone,
+              email: fields.emailAddress,
+              phone: fields.phoneNumber,
               customData: {
                 event_name: eventFor,
                 content_name: eventFor,
-                name: fields.name,
-                company_name: fields.company,
+                name: fields.fullName,
+                company_name: fields.companyName,
               },
             }),
           })
@@ -123,13 +123,13 @@ const InquiryForm = () => {
             <Input
               label='Full Name'
               required
-              name='name'
-              value={fields.name}
+              name='fullName'
+              value={fields.fullName}
               onChange={handleChange}
               autoComplete='off'
               disabled={loading}
             />
-            {submitted && errors.name && (
+            {submitted && errors.fullName && (
               <div className='text-red-400 text-xs mt-1 text-left'>{errors.name}</div>
             )}
           </div>
@@ -137,44 +137,44 @@ const InquiryForm = () => {
             <Input
               label='Email'
               required
-              name='email'
+              name='emailAddress'
               type='email'
-              value={fields.email}
+              value={fields.emailAddress}
               onChange={handleChange}
               autoComplete='off'
               disabled={loading}
             />
-            {submitted && errors.email && (
-              <div className='text-red-400 text-xs mt-1 text-left'>{errors.email}</div>
+            {submitted && errors.emailAddress && (
+              <div className='text-red-400 text-xs mt-1 text-left'>{errors.emailAddress}</div>
             )}
           </div>
           <div>
             <Input
               label='Phone/Whatsapp'
               required
-              name='phone'
+              name='phoneNumber'
               type='tel'
-              value={fields.phone}
+              value={fields.phoneNumber}
               onChange={handleChange}
               autoComplete='off'
               disabled={loading}
             />
-            {submitted && errors.phone && (
-              <div className='text-red-400 text-xs mt-1 text-left'>{errors.phone}</div>
+            {submitted && errors.phoneNumber && (
+              <div className='text-red-400 text-xs mt-1 text-left'>{errors.phoneNumber}</div>
             )}
           </div>
           <div>
             <Input
               label='Company Name'
               required
-              name='company'
-              value={fields.company}
+              name='companyName'
+              value={fields.companyName}
               onChange={handleChange}
               autoComplete='off'
               disabled={loading}
             />
-            {submitted && errors.company && (
-              <div className='text-red-400 text-xs mt-1 text-left'>{errors.company}</div>
+            {submitted && errors.companyName && (
+              <div className='text-red-400 text-xs mt-1 text-left'>{errors.companyName}</div>
             )}
           </div>
         </div>
