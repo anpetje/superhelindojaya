@@ -8,6 +8,7 @@ import Script from 'next/script';
 
 const gtmId = process.env.GTM_ID;
 const fbPixelId = process.env.FB_PIXEL_ID;
+const gtagId = process.env.GTAG_ID;
 
 export async function generateMetadata(): Promise<Metadata> {
   // Get domain from request host header
@@ -209,6 +210,26 @@ export default async function RootLayout({
       `,
           }}
         />
+      )}
+      {gtagId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
+            strategy='afterInteractive'
+          />
+          <Script
+            id='gtag-init'
+            strategy='afterInteractive'
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gtagId}');
+              `,
+            }}
+          />
+        </>
       )}
 
       <body className={`${FontsVariables.titilliumWeb.variable}`}>{children}</body>
