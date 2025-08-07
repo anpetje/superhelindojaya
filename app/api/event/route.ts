@@ -49,7 +49,7 @@ export async function POST(request: Request) {
         event_source_url: hostname,
         user_data: {
           em: email ? [hash(email)] : undefined,
-          ph: phone ? [hash(phone)] : undefined,
+          ph: phone ? [hash(phone.replace(/\D/g, ''))] : undefined,
           client_user_agent: request.headers.get('user-agent') || '',
           client_ip_address: request.headers.get('x-forwarded-for') || '',
         },
