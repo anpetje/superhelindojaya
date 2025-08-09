@@ -1,6 +1,7 @@
 import { ImagesVariables } from '@/config/images';
 import { siteConfig } from '@/config/site';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Header = () => {
   return (
@@ -23,14 +24,16 @@ const Header = () => {
     // </header>
     <header className='w-full max-w-full h-[44px] sm:h-[100px] bg-white flex items-center justify-between sm:justify-center gap-2.5 px-4 py-2.5 overflow-hidden'>
       <div className='max-w-full flex-shrink overflow-hidden'>
-        <Image
-          src={siteConfig.logo_with_text}
-          alt='SuperHelindo Jaya'
-          width={756}
-          height={92}
-          className='h-[24px] sm:h-[46px] w-auto max-w-full'
-          priority
-        />
+        <Link href='/'>
+          <Image
+            src={siteConfig.logo_with_text}
+            alt='SuperHelindo Jaya'
+            width={756}
+            height={92}
+            className='h-[24px] sm:h-[46px] w-auto max-w-full'
+            priority
+          />
+        </Link>
       </div>
       <div className='max-w-full flex-shrink-0 sm:hidden'>
         <Image

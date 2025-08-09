@@ -15,8 +15,10 @@ const Input = ({ label, required = false, ...props }: InputProps) => (
 );
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const InquiryForm = () => {
+  const router = useRouter();
   const [fields, setFields] = useState({
     fullName: '',
     emailAddress: '',
@@ -63,7 +65,6 @@ const InquiryForm = () => {
 
         const result = await res.json();
         if (result?.status === 'success') {
-          alert('Form submitted successfully!');
           setFields({ fullName: '', emailAddress: '', phoneNumber: '', companyName: '' });
 
           const eventFor = 'Submit Form';
@@ -87,6 +88,8 @@ const InquiryForm = () => {
             .catch((err) => {
               console.error('Error posting meta event:', err);
             });
+
+          router.push('/thankyou');
         } else {
           alert('Form submission failed.');
         }
