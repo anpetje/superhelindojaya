@@ -1,10 +1,3 @@
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    dataLayer?: unknown[];
-  }
-}
-
 import Link from 'next/link';
 import Header from '../../component/header';
 
