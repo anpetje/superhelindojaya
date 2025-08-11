@@ -15,10 +15,8 @@ const Input = ({ label, required = false, ...props }: InputProps) => (
 );
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 const InquiryForm = () => {
-  const router = useRouter();
   const [fields, setFields] = useState({
     fullName: '',
     emailAddress: '',
