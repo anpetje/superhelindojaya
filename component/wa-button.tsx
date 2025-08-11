@@ -30,7 +30,14 @@ const WaButton = () => {
       className='whatsappLink'
       onClick={handleClickWA}
     >
-      <Image src={Whatsapp} alt='Whatsapp' width={36} height={36} className='w-auto h-[36px]' />
+      <Image
+        id='whatsappLinkIconFooter'
+        src={Whatsapp}
+        alt='Whatsapp'
+        width={36}
+        height={36}
+        className='w-auto h-[36px]'
+      />
     </Link>
   );
 };

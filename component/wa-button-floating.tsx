@@ -30,7 +30,14 @@ const WaButtonFloating = () => {
       className='whatsappLink fixed bottom-5 md:bottom-[76px] right-3 md:right-16 rounded-full bg-white shadow-md p-0.5 md:p-1 z-50'
       onClick={handleClickWA}
     >
-      <Image src={Whatsapp} alt='Whatsapp' width={50} height={50} className='w-auto h-11' />
+      <Image
+        id='whatsappLinkIconFloat'
+        src={Whatsapp}
+        alt='Whatsapp'
+        width={50}
+        height={50}
+        className='w-auto h-11'
+      />
     </Link>
   );
 };
