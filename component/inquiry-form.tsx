@@ -89,7 +89,8 @@ const InquiryForm = () => {
               console.error('Error posting meta event:', err);
             });
 
-          router.push('/thankyou');
+          // Navigate to thankyou and force reload to ensure GTM is re-initialized
+          window.location.href = '/thankyou';
         } else {
           alert('Form submission failed.');
         }
