@@ -7,14 +7,12 @@ declare global {
 
 import Link from 'next/link';
 import Header from '../../component/header';
-import ThankYouEffectClient from './ThankYouEffectClient';
 
 // app/thankyou/page.tsx
 
 export default function ThankYouPage() {
   return (
     <>
-      <ThankYouEffectClient />
       <div className='flex flex-col min-h-screen bg-gray-50'>
         <Header />
         <section className='flex-1 flex items-center justify-center p-4'>
