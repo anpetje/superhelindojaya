@@ -7,7 +7,6 @@ import HookMessage from '@/component/hook-message';
 import InquiryForm from '@/component/inquiry-form';
 import OurClient from '@/component/our-client';
 import OurProduct from '@/component/our-product';
-import WaButtonFloating from '@/component/wa-button-floating';
 import WebBanner from '@/component/web-banner';
 
 export default function Home() {
@@ -23,7 +22,7 @@ export default function Home() {
         <Escalator />
         <OurClient />
         <HookMessage />
-        <WaButtonFloating />
+        {/* <WaButtonFloating /> */}
       </main>
       <Footer />
     </div>
