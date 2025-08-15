@@ -26,6 +26,17 @@ export async function POST(request: Request) {
     );
   }
 
+  // Parse cookies from request headers
+  function getCookieFromHeader(cookieHeader: string | null, name: string): string | null {
+    if (!cookieHeader) return null;
+    const match = cookieHeader.match(new RegExp('(^|; )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+  }
+
+  const cookieHeader = request.headers.get('cookie');
+  const fbc = getCookieFromHeader(cookieHeader, 'fbc');
+  const fbp = getCookieFromHeader(cookieHeader, '_fbp');
+
   // get hostname from request
   const url = new URL(request.url);
   const hostname = url.hostname;
@@ -52,6 +63,8 @@ export async function POST(request: Request) {
           ph: phone ? [hash(phone.replace(/\D/g, ''))] : undefined,
           client_user_agent: request.headers.get('user-agent') || '',
           client_ip_address: request.headers.get('x-forwarded-for') || '',
+          fbc: fbc || undefined,
+          fbp: fbp || undefined,
         },
         custom_data: customData,
       },
@@ -65,6 +78,14 @@ export async function POST(request: Request) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     }
+  );
+
+  console.log(
+    'Meta Event Response:',
+    response.status,
+    response.statusText,
+    response,
+    JSON.stringify(body)
   );
 
   const data = await response.json();

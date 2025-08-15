@@ -65,7 +65,7 @@ const InquiryForm = () => {
         if (result?.status === 'success') {
           setFields({ fullName: '', emailAddress: '', phoneNumber: '', companyName: '' });
 
-          const eventFor = 'Submit Form';
+          const eventFor = 'Inquiry Form';
           await fetch('/api/event', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

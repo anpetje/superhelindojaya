@@ -6,6 +6,7 @@ import { headers } from 'next/headers';
 import Head from 'next/head';
 import Script from 'next/script';
 import { GoogleTagManager } from '@next/third-parties/google';
+import CookieInit from './CookieInit';
 
 const gtmId = process.env.GTM_ID;
 const fbPixelId = process.env.FB_PIXEL_ID;
@@ -211,7 +212,10 @@ export default async function RootLayout({
       )}
 
       {gtmId && <GoogleTagManager gtmId={gtmId} />}
-      <body className={`${FontsVariables.titilliumWeb.variable}`}>{children}</body>
+      <body className={`${FontsVariables.titilliumWeb.variable}`}>
+        <CookieInit />
+        {children}
+      </body>
     </html>
   );
 }
