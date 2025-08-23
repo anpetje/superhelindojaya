@@ -7,12 +7,19 @@ import { siteConfig } from '@/config/site';
 const WaButtonFloating = () => {
   const handleClickWA = async () => {
     const eventName = 'Klik WhatsApp';
+    let eventId = eventName;
+    if (
+      (process.env.NEXT_PUBLIC_ENABLE_DYNAMIC_TRACKING_EVENT_ID || '').toLocaleLowerCase() ===
+      'true'
+    ) {
+      eventId = `${eventName.replace(/\s+/g, '_').toLowerCase()}_${Date.now()}`;
+    }
 
     await fetch('/api/event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        eventID: eventName,
+        eventID: eventId,
         eventName: 'Lead',
         customData: {
           event_name: eventName,

@@ -53,12 +53,24 @@ const InquiryForm = () => {
     if (Object.keys(validationErrors).length === 0) {
       setLoading(true);
       try {
+        const data: {
+          fullName: string;
+          emailAddress: string;
+          phoneNumber: string;
+          companyName: string;
+          utmSource?: string | null;
+        } = { ...fields };
+        // Include UTM source if available
+        if (typeof window !== 'undefined') {
+          const utmSource = localStorage.getItem('utm_source');
+          data.utmSource = utmSource || '';
+        }
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(fields),
+          body: JSON.stringify(data),
         });
 
         const result = await res.json();
@@ -66,11 +78,18 @@ const InquiryForm = () => {
           setFields({ fullName: '', emailAddress: '', phoneNumber: '', companyName: '' });
 
           const eventFor = 'Inquiry Form';
+          let eventId = eventFor;
+          if (
+            (process.env.NEXT_PUBLIC_ENABLE_DYNAMIC_TRACKING_EVENT_ID || '').toLocaleLowerCase() ===
+            'true'
+          ) {
+            eventId = `${eventFor.replace(/\s+/g, '_').toLowerCase()}_${Date.now()}`;
+          }
           await fetch('/api/event', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              eventID: eventFor,
+              eventID: eventId,
               eventName: 'Lead',
               email: fields.emailAddress,
               phone: fields.phoneNumber,
