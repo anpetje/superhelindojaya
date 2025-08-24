@@ -16,6 +16,10 @@ const Input = ({ label, required = false, ...props }: InputProps) => (
 
 import React, { useState } from 'react';
 
+type WindowWithFbq = Window & {
+  fbq?: (event: string, eventName: string, options?: object, params?: object) => void;
+};
+
 const InquiryForm = () => {
   const [fields, setFields] = useState({
     fullName: '',
@@ -85,6 +89,21 @@ const InquiryForm = () => {
           ) {
             eventId = `${eventFor.replace(/\s+/g, '_').toLowerCase()}_${Date.now()}`;
           }
+
+          // if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
+          //   (window as WindowWithFbq).fbq?.(
+          //     'track',
+          //     'Lead',
+          //     {
+          //       form_type: eventFor,
+          //     },
+          //     {
+          //       eventID: eventId,
+          //       eventName: eventFor,
+          //     }
+          //   );
+          // }
+
           await fetch('/api/event', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
