@@ -20,6 +20,13 @@ type WindowWithFbq = Window & {
   fbq?: (event: string, eventName: string, options?: object, params?: object) => void;
 };
 
+function generateEventId(prefix = 'event') {
+  const randomStr = Array.from({ length: 8 }, () =>
+    String.fromCharCode(97 + Math.floor(Math.random() * 26))
+  ).join('');
+  return `${prefix}_${Date.now()}_${randomStr}`;
+}
+
 const InquiryForm = () => {
   const [fields, setFields] = useState({
     fullName: '',
@@ -83,26 +90,25 @@ const InquiryForm = () => {
 
           const eventFor = 'Inquiry Form';
           let eventId = eventFor;
-          if (
-            (process.env.NEXT_PUBLIC_ENABLE_DYNAMIC_TRACKING_EVENT_ID || '').toLocaleLowerCase() ===
-            'true'
-          ) {
-            eventId = `${eventFor.replace(/\s+/g, '_').toLowerCase()}_${Date.now()}`;
-          }
-
-          // if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
-          //   (window as WindowWithFbq).fbq?.(
-          //     'track',
-          //     'Lead',
-          //     {
-          //       form_type: eventFor,
-          //     },
-          //     {
-          //       eventID: eventId,
-          //       eventName: eventFor,
-          //     }
-          //   );
+          // if (
+          //   (process.env.NEXT_PUBLIC_ENABLE_DYNAMIC_TRACKING_EVENT_ID || '').toLocaleLowerCase() ===
+          //   'true'
+          // ) {
+          eventId = generateEventId(eventFor?.toLowerCase().replaceAll(/\s+/g, '_'));
           // }
+
+          if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
+            (window as WindowWithFbq).fbq?.(
+              'track',
+              'Lead',
+              {
+                source: eventFor,
+              },
+              {
+                eventID: eventId,
+              }
+            );
+          }
 
           await fetch('/api/event', {
             method: 'POST',
