@@ -100,7 +100,7 @@ const InquiryForm = () => {
           if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
             (window as WindowWithFbq).fbq?.(
               'trackCustom',
-              'Lead',
+              eventFor,
               {
                 source: eventFor,
               },
@@ -115,7 +115,7 @@ const InquiryForm = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               eventID: eventId,
-              eventName: 'Lead',
+              eventName: eventFor,
               email: fields.emailAddress,
               phone: fields.phoneNumber,
               customData: {
