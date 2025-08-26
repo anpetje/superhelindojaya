@@ -40,6 +40,7 @@ export default function ThankYouPage() {
             <div className='flex flex-wrap gap-3 justify-center'>
               <Link
                 href='/'
+                prefetch={false}
                 className='px-6 py-3 bg-[#008837] text-white rounded-lg hover:scale-105 hover:shadow-lg transition'
               >
                 Back to Home

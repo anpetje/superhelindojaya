@@ -24,7 +24,7 @@ const Header = () => {
     // </header>
     <header className='w-full max-w-full h-[44px] sm:h-[100px] bg-white flex items-center justify-between sm:justify-center gap-2.5 px-4 py-2.5 overflow-hidden'>
       <div className='max-w-full flex-shrink overflow-hidden'>
-        <Link href='/'>
+        <Link href='/' prefetch={false}>
           <Image
             src={siteConfig.logo_with_text}
             alt='SuperHelindo Jaya'

@@ -99,7 +99,7 @@ const InquiryForm = () => {
 
           if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
             (window as WindowWithFbq).fbq?.(
-              'track',
+              'trackCustom',
               'Lead',
               {
                 source: eventFor,
