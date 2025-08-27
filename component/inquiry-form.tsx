@@ -88,7 +88,7 @@ const InquiryForm = () => {
         if (result?.status === 'success') {
           setFields({ fullName: '', emailAddress: '', phoneNumber: '', companyName: '' });
 
-          const eventFor = 'Inquiry Form';
+          const eventFor = 'Lead';
           let eventId = eventFor;
           // if (
           //   (process.env.NEXT_PUBLIC_ENABLE_DYNAMIC_TRACKING_EVENT_ID || '').toLocaleLowerCase() ===
@@ -99,10 +99,10 @@ const InquiryForm = () => {
 
           if (typeof window !== 'undefined' && (window as WindowWithFbq).fbq) {
             (window as WindowWithFbq).fbq?.(
-              'trackCustom',
+              'track',
               eventFor,
               {
-                source: eventFor,
+                source: 'Inquiry Form',
               },
               {
                 eventID: eventId,
@@ -119,8 +119,7 @@ const InquiryForm = () => {
               email: fields.emailAddress,
               phone: fields.phoneNumber,
               customData: {
-                event_name: eventFor,
-                content_name: eventFor,
+                content_name: 'Inquiry Form',
                 name: fields.fullName,
                 company_name: fields.companyName,
               },
